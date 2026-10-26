@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SkyCast</title>
+  <link rel="stylesheet" href="weather.css">
+</head>
+<body>
+
+  <!-- Top-Right Upper Corner Bell Notification Widget -->
+  <div id="corner-notify-wrapper" class="corner-notify-wrapper">
+    <button type="button" id="corner-bell-btn" class="corner-bell-btn" title="Rain Notifications" aria-label="Rain Notifications">
+      <span class="bell-icon-symbol">🔔</span>
+      <span id="corner-bell-badge" class="corner-bell-badge hidden">!</span>
+    </button>
+
+    <!-- Top-Right Notification Dropdown Panel -->
+    <div id="corner-notify-panel" class="corner-notify-panel hidden">
+      <div class="panel-header">
+        <div class="panel-header-title">
+          <span>🔔</span>
+          <h4>Rain Notifications</h4>
+        </div>
+        <button type="button" id="corner-panel-close" class="panel-close-btn" aria-label="Close notifications">&times;</button>
+      </div>
+
+      <div id="corner-panel-body" class="panel-body">
+        <!-- Dynamic Rain Info will be injected here -->
+      </div>
+
+      <div class="panel-footer">
+        <div class="push-setting-row">
+          <span>Desktop Push Alerts</span>
+          <button type="button" id="push-permission-btn" class="push-toggle-btn">Turn ON</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- App Header -->
+  <header>
+    <h1>SkyCast</h1>
+    
+    <!-- Location Search Form -->
+    <form id="search-form">
+      <label for="city-input">Search Location:</label>
+      <input type="text" id="city-input" placeholder="Enter city name..." required>
+      <button type="submit" id="search-btn">Search</button>
+      <button type="button" id="location-btn">Use Current Location</button>
+    </form>
+
+    <!-- Temperature Unit Selector & Theme Toggle -->
+    <div id="unit-selector">
+      <span>Unit:</span>
+      <button type="button" id="unit-celsius">°C</button>
+      <button type="button" id="unit-fahrenheit">°F</button>
+      <button type="button" id="theme-toggle">☀️ / 🌙</button>
+    </div>
+  </header>
+
+  <!-- In-App Toast Notification Container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Main Weather Content -->
+  <main>
+
+    <!-- Current Weather Overview -->
+    <section id="current-weather">
+      <!-- Light Rain Animation Canvas for Current Weather Section -->
+      <canvas id="rain-canvas" class="rain-canvas"></canvas>
+
+      <h2 id="city-name">City Name, Country</h2>
+      <p id="current-date-time">Date & Time</p>
+      
+      <div id="weather-main">
+        <img id="weather-icon" src="" alt="Weather Condition Icon">
+        <div id="temperature">--°C</div>
+        <p id="weather-condition">Condition (e.g. Sunny / Rainy)</p>
+      </div>
+
+      <div id="temp-details">
+        <p>Feels Like: <span id="feels-like">--°C</span></p>
+        <p>High: <span id="temp-high">--°C</span> | Low: <span id="temp-low">--°C</span></p>
+      </div>
+    </section>
+
+    <!-- Weather Details Grid -->
+    <section id="weather-details">
+      <h3>Weather Details</h3>
+      
+      <ul>
+        <li>
+          <strong>Humidity:</strong> <span id="humidity">--%</span>
+        </li>
+        <li>
+          <strong>Wind Speed:</strong> <span id="wind-speed">-- km/h</span>
+        </li>
+        <li>
+          <strong>Wind Direction:</strong> <span id="wind-direction">--</span>
+        </li>
+        <li>
+          <strong>UV Index:</strong> <span id="uv-index">--</span>
+        </li>
+        <li>
+          <strong>Air Pressure:</strong> <span id="pressure">-- hPa</span>
+        </li>
+        <li>
+          <strong>Precipitation Chance:</strong> <span id="precipitation">--%</span>
+        </li>
+        <li>
+          <strong>Sunrise:</strong> <span id="sunrise">--:-- AM</span>
+        </li>
+        <li>
+          <strong>Sunset:</strong> <span id="sunset">--:-- PM</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Hourly Forecast -->
+    <section id="hourly-forecast">
+      <h3>Hourly Forecast</h3>
+      <div id="hourly-container">
+        <!-- Sample Hourly Card Structure -->
+        <div class="hourly-item">
+          <span class="hourly-time">12 PM</span>
+          <img class="hourly-icon" src="" alt="Hourly Weather Icon">
+          <span class="hourly-temp">--°C</span>
+          <span class="hourly-pop">--% Rain</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7-Day Daily Forecast -->
+    <section id="daily-forecast">
+      <h3>7-Day Forecast</h3>
+      <div id="daily-container">
+        <!-- Sample Daily Card Structure -->
+        <div class="daily-item">
+          <span class="daily-day">Monday</span>
+          <span class="daily-date">Jan 1</span>
+          <img class="daily-icon" src="" alt="Daily Weather Icon">
+          <span class="daily-condition">Partly Cloudy</span>
+          <span class="daily-temp-range">Low: --°C / High: --°C</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; Weather App. All rights reserved.</p>
+  </footer>
+
+  <!-- JavaScript Logic -->
+  <script src="weather.js"></script>
+</body>
+</html>
